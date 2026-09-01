@@ -1,5 +1,6 @@
 export const wait=(ms=700)=>new Promise<void>(r=>setTimeout(r,ms));
-export async function extractDocuments(){await wait(1300);return {fields:7}}
+export async function extractDocuments(fileCount=1){await wait(1000+Math.min(fileCount,5)*280);return {fields:7}}
+export async function queueDocuments(fileCount=1){await wait(550+Math.min(fileCount,5)*160);return {fileCount,status:'READY'}}
 export async function verifyField(id:string){await wait(250);return {id,status:'VERIFIED'}}
 export async function resolveConflict(value:string){await wait(300);return {value,status:'VERIFIED'}}
 export async function generateSupplierRequest(){await wait(650);return {id:'REQ-1048'}}
